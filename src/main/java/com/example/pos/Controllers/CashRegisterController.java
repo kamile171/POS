@@ -40,6 +40,10 @@ public class CashRegisterController {
 
         return cashRegisterService.saveCashRegister(newCashRegister);
     }
+    @PutMapping("/cashregister")
+    CashRegister updateRegister(@RequestBody CashRegister newCashRegister) {
+        return cashRegisterService.updateRegister(newCashRegister);
+    }
     @DeleteMapping("/cashregister/{registerId}")
     void deleteItem(@PathVariable Long registerId) {
         cashRegisterService.deleteRegisterById(registerId);
