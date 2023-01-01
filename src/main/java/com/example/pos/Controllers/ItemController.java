@@ -30,7 +30,8 @@ public class ItemController {
 
     @PostMapping("/item")
     Item createNewItem(@RequestBody Item newItem) {
-        return itemRepository.save(newItem);
+
+        return itemService.saveItem(newItem);
     }
 
     @GetMapping("/item/{id}")

@@ -1,10 +1,12 @@
 package com.example.pos.Services;
 
+import com.example.pos.Exceptions.InvalidInputException;
 import com.example.pos.Exceptions.ItemNotFoundException;
 import com.example.pos.Models.Item;
 import com.example.pos.Repositories.Interface.ItemRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -26,7 +28,13 @@ public class ItemService {
         }
         itemRepository.deleteById(id);
     }
+    public Item saveItem(Item newItem) {
 
+        if (newItem.getItemName() == null || newItem.getCost() == null || newItem.getDiscountPercentage() == null) {
+            throw new InvalidInputException();
+        }
+        return itemRepository.save(newItem);
+    }
     public Item updateItem(Item newItem) {
 
         return itemRepository.findById(newItem.getId())
