@@ -3,6 +3,7 @@ package com.example.pos.Services;
 import com.example.pos.Exceptions.InvalidInputException;
 import com.example.pos.Exceptions.ItemNotFoundException;
 import com.example.pos.Models.CashRegister;
+import com.example.pos.Models.Item;
 import com.example.pos.Repositories.Interface.CashRegisterRepository;
 import com.example.pos.Repositories.Interface.SubscriptionRepository;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.List;
 public class CashRegisterService {
     private final CashRegisterRepository cashRegisterRepository;
     private final SubscriptionRepository subscriptionRepository;
+
 
     CashRegisterService(CashRegisterRepository cashRegisterRepository, SubscriptionRepository subscriptionRepository) {
         this.cashRegisterRepository = cashRegisterRepository;
@@ -46,6 +48,27 @@ public class CashRegisterService {
         }
 
         return cashRegisterRepository.save(newCashRegister);
+    }
+    public CashRegister updateRegister(CashRegister newCashRegister) {
+
+        if (!subscriptionRepository.existsById(newCashRegister.getBusinessId()))
+        {
+            throw new ItemNotFoundException(newCashRegister.getBusinessId());
+        }
+
+        //check if cashier exists
+        //******************************
+        //
+        return cashRegisterRepository.findById(newCashRegister.getRegisterId())
+                .map(cashRegister -> {
+                    cashRegister.setCurrentCashierId(newCashRegister.getCurrentCashierId());
+                    cashRegister.setTotalEarnings(newCashRegister.getTotalEarnings());
+                    cashRegister.setTransactionCount(newCashRegister.getTransactionCount());
+                    cashRegister.setCashInRegister(newCashRegister.getCashInRegister());
+                    cashRegister.setPreferredCurrency(newCashRegister.getPreferredCurrency());
+                    return cashRegisterRepository.save(cashRegister);
+                })
+                .orElseThrow(() -> new ItemNotFoundException(newCashRegister.getRegisterId()));
     }
     public void deleteRegisterById(Long id) {
 
