@@ -17,15 +17,15 @@ public class CashRegister {
     private BigDecimal totalEarnings;
     private int transactionCount;
     private BigDecimal cashInRegister;
-    //private String preferredCurrency;
+    private String preferredCurrency;
 
-
-    public CashRegister(Long businessId, Long currentCashierId, BigDecimal totalEarnings, int transactionCount, BigDecimal cashInRegister) {
+    public CashRegister(Long businessId, Long currentCashierId, BigDecimal totalEarnings, int transactionCount, BigDecimal cashInRegister, String preferredCurrency) {
         this.businessId = businessId;
         this.currentCashierId = currentCashierId;
         this.totalEarnings = totalEarnings;
         this.transactionCount = transactionCount;
         this.cashInRegister = cashInRegister;
+        this.preferredCurrency = preferredCurrency;
     }
 
     public CashRegister() {
@@ -78,5 +78,13 @@ public class CashRegister {
 
     public void setCashInRegister(BigDecimal cashInRegister) {
         this.cashInRegister = cashInRegister;
+    }
+
+    public String getPreferredCurrency() {
+        return preferredCurrency;
+    }
+
+    public void setPreferredCurrency(String preferredCurrency) {
+        this.preferredCurrency = preferredCurrency;
     }
 }
