@@ -26,14 +26,6 @@ PUT http://localhost:8080/item
 - Finds Items by criteria
 GET http://localhost:8080/item/criteria
 Keys: itemName (String), cost (BigDecimal), discountPercentage (Double)
-[
-  {
-    "id": 799,
-    "itemName": "soap",
-    "cost": 1.99,
-    "discountPercentage": 78.9
-  }
-]
 
 - Find all items in inventory
 GET http://localhost:8080/items
