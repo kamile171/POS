@@ -27,9 +27,9 @@ public class StaffController {
         return staffRepository.findAll();
     }
 
-    @PutMapping("/staff")
-    Staff updateStaff(@RequestBody Staff newStaff) {
-        return staffService.updateStaff(newStaff);
+    @PutMapping("/staff/{staffId}")
+    Staff updateStaff(@RequestBody Staff newStaff, @PathVariable Long staffId) {
+        return staffService.updateStaff(newStaff, staffId);
     }
 
     @PostMapping("/staff")
@@ -50,7 +50,7 @@ public class StaffController {
     }
 
     @PutMapping("/staff/{staffId}/role")
-    void updateStaffRole(@PathVariable String role, @PathVariable Long staffId) {
-        staffRepository.updateStaffRole(role, staffId);
+    void updateStaffRole(@RequestBody String role, @PathVariable Long staffId) {
+        staffService.updateStaffRole(role, staffId);
     }
 }
