@@ -1,5 +1,6 @@
 package com.example.pos.Controllers;
 
+import com.example.pos.Exceptions.ItemNotFoundException;
 import com.example.pos.Models.Item;
 import com.example.pos.Repositories.Interface.ItemRepository;
 import org.springframework.web.bind.annotation.GetMapping;

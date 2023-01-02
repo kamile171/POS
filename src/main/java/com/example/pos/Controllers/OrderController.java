@@ -30,7 +30,7 @@ public class OrderController {
         return orderService.filterOrders(req);
     }
 
-    @GetMapping("/order/{orderId}")
+    @GetMapping("/order/{id}")
         Order one(@PathVariable Long id) {
 
     return orderRepository.findById(id)
@@ -46,7 +46,7 @@ public class OrderController {
         return orderService.updateItem(newOrder);
     }
 
-    @DeleteMapping("/order/{orderId}")
+    @DeleteMapping("/order/{id}")
     void deleteOrder(@PathVariable Long id) {
         orderService.deleteItemById(id);
     }
