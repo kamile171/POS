@@ -1,5 +1,95 @@
 # Instruction how to test APIs
 
+### Implemented URLs and their request bodies:
+
+- Add a new item to the inventory
+POST http://localhost:8080/item
+
+{
+  "id": 799,
+  "itemName": "soap",
+  "cost": 1.99,
+  "discountPercentage": 78.9
+}
+
+- Update an existing item
+PUT http://localhost:8080/item
+
+{
+  "id": 799,
+  "itemName": "soap",
+  "cost": 1.99,
+  "discountPercentage": 78.9
+}
+
+- Finds Items by criteria
+GET http://localhost:8080/item/criteria
+
+[
+  {
+    "id": 799,
+    "itemName": "soap",
+    "cost": 1.99,
+    "discountPercentage": 78.9
+  }
+]
+
+- Find all items in inventory
+GET http://localhost:8080/items
+
+- Add a new order
+POST http://localhost:8080/order
+
+{
+    "id": 3,
+    "registerId": 777,
+    "itemId": 111,
+    "totalValue": 99.5,
+    "dateTime": "2019-02-05T22:08:28.097832",
+    "paymentMethod": "cash",
+    "isInactive": true,
+    "loyalty": 2.56,
+    "orderComment": "Order made by beauty salon.",
+    "items": [
+        799,
+        864,
+        555
+    ]
+}
+
+- Update an existing order
+PUT http://localhost:8080/order
+
+{
+    "id": 3,
+    "registerId": 777,
+    "itemId": 111,
+    "totalValue": 99.5,
+    "dateTime": "2019-02-05T22:08:28.097832",
+    "paymentMethod": "cash",
+    "isInactive": true,
+    "loyalty": 2.56,
+    "orderComment": "Order made by beauty salon.",
+    "items": [
+        799,
+        864,
+        555
+    ]
+}
+
+- Finds Order by criteria
+GET http://localhost:8080/order/criteria
+Keys: isInactive (Boolean), orderComment (String), items (Long[])
+
+- Find all orders
+GET http://localhost:8080/orders
+
+- Find order by ID 
+GET http://localhost:8080/order/{orderId}
+
+- Delete an order
+DELETE http://localhost:8080/order/{orderId}
+
 ## a) Using Firefox browser
   1) Run the "jar" file. It should be in the email/.
   2) Open Firefox Browser.
@@ -38,43 +128,21 @@
 ![image](https://user-images.githubusercontent.com/90321426/210212311-20dfb5b0-01a2-4664-8123-882c5db8734f.png)
 
 
-### Implemented URLs and their request bodies:
-
-- Add a new item to the inventory
-POST http://localhost:8080/item
-
-{
-  "id": 799,
-  "itemName": "soap",
-  "cost": 1.99,
-  "discountPercentage": 78.9
-}
-
-- Update an existing item
-PUT http://localhost:8080/item
-
-{
-  "id": 799,
-  "itemName": "soap",
-  "cost": 1.99,
-  "discountPercentage": 78.9
-}
-
-- Finds Items by criteria
-GET http://localhost:8080/item/criteria
-
-[
-  {
-    "id": 799,
-    "itemName": "soap",
-    "cost": 1.99,
-    "discountPercentage": 78.9
-  }
-]
-
-- Find all items in inventory
-GET http://localhost:8080/items
-
-- 
-
 ## b) Using Postman
+  1) Download and install the Postman app https://www.postman.com/downloads/ 
+  2) Run PosApplication.main()
+  3) In postman go to Workspaces -> My Workspace -> New -> HTTP Request
+  
+https://user-images.githubusercontent.com/76537530/210276698-840b9cfb-a881-415f-ad8d-a6db1b33fd87.mp4
+
+  4) Test the api :]
+  
+### Examples:
+  a) Post Order
+    
+https://user-images.githubusercontent.com/76537530/210277169-4f07fd9e-59fd-42d2-9c06-c1438540d0ee.mp4
+
+  b) Get Order by criteria
+  
+https://user-images.githubusercontent.com/76537530/210277567-9561f181-8638-48d8-8cf1-08b439fa2045.mp4
+
