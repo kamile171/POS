@@ -1,54 +1,64 @@
 package com.example.pos.Controllers;
 
-import com.example.pos.Exceptions.OrderNotFoundException;
-import com.example.pos.Models.Order;
-import com.example.pos.Services.OrderService;
-import com.example.pos.Repositories.Interface.OrderRepository;
-import org.springframework.web.bind.annotation.*;
+import com.example.pos.Exceptions.ItemNotFoundException;
+import com.example.pos.Models.Item;
+import com.example.pos.Repositories.Interface.ItemRepository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import com.example.pos.Services.ItemService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
+import java.util.Map;
+
 @RestController
-public class OrderController {
+public class ItemController {
 
-    private final OrderRepository orderRepository;
-    private final OrderService orderService;
-    OrderController(OrderRepository orderRepository, OrderService orderService) {
-        this.orderRepository = orderRepository;
-        this.orderService = orderService;
+    private final ItemRepository itemRepository;
+    private final ItemService itemService;
+
+    ItemController(ItemRepository itemRepository, ItemService itemService) {
+        this.itemRepository = itemRepository;
+        this.itemService = itemService;
     }
 
-    @GetMapping("/orders")
-    List<Order> all() {
-        return orderRepository.findAll();
+    @GetMapping("/items")
+    List<Item> getAllItems() {
+        return itemRepository.findAll();
     }
 
-    @GetMapping("/order/criteria")
-    List<Order> findItemByCriteria(HttpServletRequest req)
+
+    @PostMapping("/item")
+    Item createNewItem(@RequestBody Item newItem) {
+
+        return itemService.saveItem(newItem);
+    }
+
+    @GetMapping("/item/{id}")
+    Item findItemById(@PathVariable Long id) {
+
+        return itemRepository.findById(id)
+               .orElseThrow(() -> new ItemNotFoundException(id));
+    }
+    @GetMapping("/item/criteria")
+    List<Item> findItemByCriteria(HttpServletRequest req)
     {
-        return orderService.filterOrders(req);
+        return itemService.filterItems(req);
     }
 
-    @GetMapping("/order/{orderId}")
-        Order one(@PathVariable Long id) {
-
-    return orderRepository.findById(id)
-            .orElseThrow(() -> new OrderNotFoundException(id));
-    }
-    @PostMapping("/order")
-    Order newOrder(@RequestBody Order newOrder) {
-        return orderService.saveOrder(newOrder);
+    @PutMapping("/item")
+    Item updateItem(@RequestBody Item newItem) {
+        return itemService.updateItem(newItem);
     }
 
-    @PutMapping("/order")
-    Order replaceEmployee(@RequestBody Order newOrder) {
-        return orderService.updateItem(newOrder);
-    }
-
-    @DeleteMapping("/order/{orderId}")
-    void deleteOrder(@PathVariable Long id) {
-        orderService.deleteItemById(id);
+    @DeleteMapping("/item/{id}")
+    void deleteItem(@PathVariable Long id) {
+        itemService.deleteItemById(id);
     }
 
 }
