@@ -1,6 +1,6 @@
 # Instruction how to test APIs
 
-a) ## Using Firefox browser
+## a) Using Firefox browser
   1) Run the "jar" file. It should be in the email/.
   2) Open Firefox Browser.
   3) Click Burger menu on the top right.
@@ -77,4 +77,4 @@ GET http://localhost:8080/items
 
 - 
 
-b) ## Using Postman
+## b) Using Postman
