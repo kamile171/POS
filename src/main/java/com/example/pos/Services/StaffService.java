@@ -31,15 +31,15 @@ public class StaffService {
 
     public Staff saveStaff(Staff newStaff) {
 
-        if (newStaff.getStaffId() == null || newStaff.getName() == null || newStaff.getSurname() == null || newStaff.getDateOfEntrance() == null || newStaff.getTotalHoursWorked() == null || newStaff.getRole() == null) {
+        if (newStaff.getName() == null || newStaff.getSurname() == null || newStaff.getDateOfEntrance() == null || newStaff.getTotalHoursWorked() == null || newStaff.getRole() == null) {
             throw new InvalidInputException();
         }
         return staffRepository.save(newStaff);
     }
 
-    public Staff updateStaff(Staff newStaff) {
+    public Staff updateStaff(Staff newStaff, Long staffId) {
 
-        return staffRepository.findById(newStaff.getStaffId())
+        return staffRepository.findById(staffId)
                 .map(staff -> {
                     staff.setName(newStaff.getName());
                     staff.setSurname(newStaff.getSurname());
@@ -49,5 +49,15 @@ public class StaffService {
                     return staffRepository.save(staff);
                 })
                 .orElseThrow(() -> new StaffNotFoundException(newStaff.getStaffId()));
+    }
+
+    public Staff updateStaffRole(String role, Long staffId) {
+
+        return staffRepository.findById(staffId)
+                .map(staff -> {
+                    staff.setRole(role);
+                    return staffRepository.save(staff);
+                })
+                .orElseThrow(() -> new StaffNotFoundException(staffId));
     }
 }
