@@ -1,6 +1,6 @@
-#Instruction how to test APIs
+# Instruction how to test APIs
 
-a) ##Using Firefox browser
+a) ## Using Firefox browser
   1) Run the "jar" file. It should be in the email/.
   2) Open Firefox Browser.
   3) Click Burger menu on the top right.
@@ -38,7 +38,7 @@ a) ##Using Firefox browser
 ![image](https://user-images.githubusercontent.com/90321426/210212311-20dfb5b0-01a2-4664-8123-882c5db8734f.png)
 
 
-###Implemented URLs and their request bodies:
+### Implemented URLs and their request bodies:
 
 - Add a new item to the inventory
 POST http://localhost:8080/item
@@ -77,4 +77,4 @@ GET http://localhost:8080/items
 
 - 
 
-b) ##Using Postman
+b) ## Using Postman
