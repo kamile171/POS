@@ -3,6 +3,7 @@ package com.example.pos.Models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "order_table")
 public class Order {
 
     private @Id @GeneratedValue Long id;
