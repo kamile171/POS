@@ -25,7 +25,7 @@ PUT http://localhost:8080/item
 
 - Finds Items by criteria
 GET http://localhost:8080/item/criteria
-
+Keys: itemName (String), cost (BigDecimal), discountPercentage (Double)
 [
   {
     "id": 799,
