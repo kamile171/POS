@@ -137,12 +137,12 @@ Waiter
 GET http://localhost:8080/subscriptions
 
 - Add a new subscription
-POST http://localhost:8080/subscriptions
+POST http://localhost:8080/subscription
 
 {"businessName": "Some Business", "daysUntilNextPayment": 30, "paymentAmount":"199.99"}
 
 - Update an existing subscription
-PUT http://localhost:8080/subscriptions
+PUT http://localhost:8080/subscription
 
 {"businessId":1, "businessName": "Some Business", "daysUntilNextPayment": 15, "paymentAmount":"199.99"}
 
