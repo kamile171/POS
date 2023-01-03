@@ -206,8 +206,8 @@ GET http://localhost:8080/fault/{faultId}
 DELETE http://localhost:8080/fault/{faultId}
 
 ## a) Using Firefox browser
-  1) Run the attached jar file "lab3.jar". It should be in the MS TEAMS folder "Lab3 Student Submissions".
-  (!! If default port (8080) is occupied, for Windows system use comand "java -jar -Dserver.port=8083 lab3.jar" to change the port !!)
+  1) Run the attached jar file "quickfix_lab3.jar". It should be in the MS TEAMS folder "Lab3 Student Submissions".
+  (!! If default port (8080) is occupied, for Windows system use comand "java -jar -Dserver.port=8083 quickfix_lab3.jar" to change the port !!)
   2) Open Firefox Browser.
   3) Click Burger menu on the top right.
 
@@ -246,7 +246,7 @@ DELETE http://localhost:8080/fault/{faultId}
 
 ## b) Using Postman
   1) Download and install the Postman app https://www.postman.com/downloads/ 
-  2) Run PosApplication.main() or attached jar file (lab3.jar)
+  2) Run PosApplication.main() or attached jar file "quickfix_lab3.jar"
   3) In postman go to Workspaces -> My Workspace -> New -> HTTP Request
   
 https://user-images.githubusercontent.com/76537530/210276698-840b9cfb-a881-415f-ad8d-a6db1b33fd87.mp4
