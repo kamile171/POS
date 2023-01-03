@@ -98,6 +98,7 @@ GET http://localhost:8080/staff
 
 - Update an existing staff member
 PUT http://localhost:8080/staff/{staffId}
+
 {
   "name": "Jackie",
   "surname": "Chan",
@@ -108,6 +109,7 @@ PUT http://localhost:8080/staff/{staffId}
 
 - Add a new staff member
 POST http://localhost:8080/staff
+
 {
   "name": "John",
   "surname": "Smith",
@@ -124,6 +126,7 @@ DELETE http://localhost:8080/staff/{staffId}
 
 - Update staff member role
 PUT http://localhost:8080/staff/{staffId}/role
+
 Waiter
 
 (!!to update staff member role, put his ID in url and send desired role as simple string, just the word!!)
@@ -180,6 +183,7 @@ GET http://localhost:8080/faults
 
 - Add a new fault
 POST http://localhost:8080/fault
+
 {
   "urgency": "urgency_text",
   "description": "description_text",
@@ -188,6 +192,7 @@ POST http://localhost:8080/fault
 
 - Update an existing fault
 PUT POST http://localhost:8080/fault/{faultId}
+
 {
   "urgency": "urgency_text",
   "description": "description_text",
