@@ -206,7 +206,7 @@ GET http://localhost:8080/fault/{faultId}
 DELETE http://localhost:8080/fault/{faultId}
 
 ## a) Using Firefox browser
-  1) Run the "jar" file. It should be in the email or in MS TEAMS folder "Lab3 Student Submissions".
+  1) Run the "jar" file. It should be in the MS TEAMS folder "Lab3 Student Submissions".
   (!! If default port (8080) is occupied, for Windows system use comand "java -jar -Dserver.port=8083 lab3.jar" to change the port !!)
   2) Open Firefox Browser.
   3) Click Burger menu on the top right.
